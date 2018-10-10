@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOfferImagesTable extends Migration
+class CreateContactsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,8 @@ class CreateOfferImagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('offer_images', function (Blueprint $table) {
+        Schema::create('contacts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('offer_id');
-
-            $table->integer('offer_id')->unsigned()->index();
-            $table->forgien('offer_id')->refrences('offer_id')->on('offers')->onDelete('cascade');
-            
-            $table->string('image_url');
-
             $table->timestamps();
         });
     }
@@ -33,6 +26,6 @@ class CreateOfferImagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('offer_images');
+        Schema::dropIfExists('contacts');
     }
 }

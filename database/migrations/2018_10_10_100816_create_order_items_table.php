@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateReviewsTable extends Migration
+class CreateOrderItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,18 @@ class CreateReviewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('reviews', function (Blueprint $table) {
-            $table->increments('review_id');
+        Schema::create('order_items', function (Blueprint $table) {
+            $table->increments('order_items_id');
 
-            $table->integer('customer_id')->unsigned()->index();
-            $table->foreign('customer_id')->refrences('customer_id')->on('customers')->onDelete('cascade');
+            $table->integer('order_id')->unsigned()->index();
+            $table->forgien('order_id')->refrences('order_id')->on('orders')->onDelete('cascade');
+
+            $table->float('unit_price');
 
             $table->integer('product_id')->unsigned()->index();
             $table->forgien('product_id')->refrences('product_id')->on('products')->onDelete('cascade');
 
-            $table->integer('review_star');
-            $table->string('review_title');
-            $table->string('review_comment');
+            $table->integer('unit_count');
 
             $table->timestamps();
         });
@@ -37,6 +37,6 @@ class CreateReviewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reviews');
+        Schema::dropIfExists('order_items');
     }
 }
