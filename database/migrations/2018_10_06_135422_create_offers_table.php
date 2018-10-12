@@ -14,21 +14,21 @@ class CreateOffersTable extends Migration
     public function up()
     {
         Schema::create('offers', function (Blueprint $table) {
-            $table->increments('offer_id');
+            $table->increments('offer_id')->unsigned();
 
             $table->integer('product_id')->unsigned()->index();
-            $table->forgien('product_id')->refrences('product_id')->on('products')->onDelete('cascade');
+            $table->foreign('product_id')->references('product_id')->on('products')->onDelete('cascade');
 
-            $table->increments('offer_title');
-            $table->increments('offer_price');
-            $table->increments('offer_discount');
-            $table->increments('offer_description');
-            $table->increments('offer_status');
-            $table->increments('offer_type');
-            $table->increments('offer_ends_date');
+            $table->string('offer_title');
+            $table->float('offer_price');
+            $table->float('offer_discount');
+            $table->text('offer_description');
+            $table->string('offer_status');
+            $table->string('offer_type');
+            $table->date('offer_ends_date');
 
-            $table->increments('employee_created_id')->unsigned()->index();
-            $table->forgien('employee_created_id')->refrences('employee_id')->on('employee')->onDelete('cascade');
+            $table->integer('employee_created_id')->unsigned()->index();
+            $table->foreign('employee_created_id')->references('employee_id')->on('employees')->onDelete('cascade');
 
             $table->timestamps();
         });

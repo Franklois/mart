@@ -14,16 +14,16 @@ class CreateFavoriteItemsTable extends Migration
     public function up()
     {
         Schema::create('favorite_items', function (Blueprint $table) {
-            $table->increments('favorite_tiems_id');
+            $table->increments('favorite_tiems_id')->unsigned();
 
 
             $table->integer('favorite_id')->unsigned()->index();
-            $table->forgien('favorite_id')->refrences('favorite_id')->on('favorites')->onDelete('cascade');
+            $table->foreign('favorite_id')->references('favorite_id')->on('favorites')->onDelete('cascade');
 
             $table->integer('offer_id')->unsigned()->index();
-            $table->forgien('offer_id')->refrences('offer_id')->on('offers')->onDelete('cascade');
+            $table->foreign('offer_id')->references('offer_id')->on('offers')->onDelete('cascade');
 
-            $table->intege('share_status');
+            $table->integer('share_status');
 
 
             $table->timestamps();

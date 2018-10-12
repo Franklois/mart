@@ -14,12 +14,12 @@ class CreateEmployeesTable extends Migration
     public function up()
     {
         Schema::create('employees', function (Blueprint $table) {
-            $table->increments('employee_id');
+            $table->increments('employee_id')->unsigned();
             $table->string('employee_name');
             $table->string('employee_job_title');
 
             $table->integer('contact_id')->unsigned()->index();
-            $table->forgien('contact_id')->refrences('contact_id')->on('contacts')->onDelete('cascade');
+            $table->foreign('contact_id')->references('contact_id')->on('contacts')->onDelete('cascade');
 
             $table->integer('ssn');
             $table->string('employee_front_id_image');

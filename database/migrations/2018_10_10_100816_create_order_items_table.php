@@ -14,15 +14,15 @@ class CreateOrderItemsTable extends Migration
     public function up()
     {
         Schema::create('order_items', function (Blueprint $table) {
-            $table->increments('order_items_id');
+            $table->increments('order_items_id')->unsigned();
 
             $table->integer('order_id')->unsigned()->index();
-            $table->forgien('order_id')->refrences('order_id')->on('orders')->onDelete('cascade');
+            $table->foreign('order_id')->references('order_id')->on('orders')->onDelete('cascade');
 
             $table->float('unit_price');
 
             $table->integer('product_id')->unsigned()->index();
-            $table->forgien('product_id')->refrences('product_id')->on('products')->onDelete('cascade');
+            $table->foreign('product_id')->references('product_id')->on('products')->onDelete('cascade');
 
             $table->integer('unit_count');
 

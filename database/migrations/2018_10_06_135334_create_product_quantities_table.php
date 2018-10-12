@@ -14,13 +14,13 @@ class CreateProductQuantitiesTable extends Migration
     public function up()
     {
         Schema::create('product_quantities', function (Blueprint $table) {
-            $table->increments('product_quantity_id');
+            $table->increments('product_quantity_id')->unsigned();
 
             $table->integer('product_id')->unsigned()->index();
-            $table->forgien('product_id')->refrences('product_id')->on('products')->onDelete('cascade');
+            $table->foreign('product_id')->references('product_id')->on('products')->onDelete('cascade');
 
             $table->integer('store_id')->unsigned()->index();
-            $table->forgien('store_id')->refrences('store_id')->on('store')->onDelete('cascade');
+            $table->foreign('store_id')->references('store_id')->on('stores')->onDelete('cascade');
 
             $table->integer('quantity');
             $table->timestamps();

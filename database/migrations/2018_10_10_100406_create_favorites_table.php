@@ -14,10 +14,10 @@ class CreateFavoritesTable extends Migration
     public function up()
     {
         Schema::create('favorites', function (Blueprint $table) {
-            $table->increments('favorite_id');
-            
+            $table->increments('favorite_id')->unsigned();
+
             $table->integer('customer_id')->unsigned()->index();
-            $table->forgien('customer_id')->refrences('customer_id')->on('customers')->onDelete('cascade');
+            $table->foreign('customer_id')->references('customer_id')->on('customers')->onDelete('cascade');
 
             $table->timestamps();
         });

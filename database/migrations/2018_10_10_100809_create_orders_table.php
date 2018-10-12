@@ -14,16 +14,16 @@ class CreateOrdersTable extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->increments('order_id');
+            $table->increments('order_id')->unsigned();
 
             $table->integer('customer_id')->unsigned()->index();
-            $table->forgien('customer_id')->refrences('customer_id')->on('customers')->onDelete('cascade');
+            $table->foreign('customer_id')->references('customer_id')->on('customers')->onDelete('cascade');
 
             $table->float('order_total');
             $table->string('order_status');
 
             $table->integer('delivary_address_id')->unsigned()->index();
-            $table->forgien('delivary_address_id')->refrences('address_id')->on('adresses')->onDelete('cascade');
+            $table->foreign('delivary_address_id')->references('address_id')->on('adresses')->onDelete('cascade');
 
 
             $table->timestamps();

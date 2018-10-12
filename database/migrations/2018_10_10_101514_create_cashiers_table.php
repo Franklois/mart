@@ -14,10 +14,10 @@ class CreateCashiersTable extends Migration
     public function up()
     {
         Schema::create('cashiers', function (Blueprint $table) {
-            $table->increments('cashier_id');
+            $table->increments('cashier_id')->unsigned();
 
             $table->integer('store_id')->unsigned()->index();
-            $table->forgien('store_id')->refrences('store_id')->on('stores')->onDelete('cascade');
+            $table->foreign('store_id')->references('store_id')->on('stores')->onDelete('cascade');
 
             $table->double('cashier_value');
             $table->integer('cashier_order_count');
