@@ -103,6 +103,7 @@ return [
     | will not be safe. Please do this before deploying an application!
     |
     */
+    'faker_locale' => 'ar_SA',
 
     'key' => env('APP_KEY'),
 
@@ -227,5 +228,4 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
     ],
-
 ];

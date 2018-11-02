@@ -18,7 +18,7 @@ class CreateFavoritesTable extends Migration
 
             $table->integer('customer_id')->unsigned()->index();
             $table->foreign('customer_id')->references('customer_id')->on('customers')->onDelete('cascade');
-
+            
             $table->timestamps();
         });
     }

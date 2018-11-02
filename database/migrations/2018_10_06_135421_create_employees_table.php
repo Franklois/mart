@@ -21,7 +21,7 @@ class CreateEmployeesTable extends Migration
             $table->integer('contact_id')->unsigned()->index();
             $table->foreign('contact_id')->references('contact_id')->on('contacts')->onDelete('cascade');
 
-            $table->integer('ssn');
+            $table->string('ssn')->change();
             $table->string('employee_front_id_image');
             $table->string('employee_back_id_image');
             $table->string('employee_presonal_image');
